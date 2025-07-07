@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "virtual-properties"
+version = "0.1.0"
+description = ""
+authors = ["Pavle Stojicevic pavles2002@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.13"
+pydantic-settings = "^2.10.1"
+sqlalchemy = "^2.0.41"
+psycopg2-binary = "^2.9.10"
+alembic = "^1.16.2"
+
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = {extras = ["standard"], version = "^0.34.3"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
