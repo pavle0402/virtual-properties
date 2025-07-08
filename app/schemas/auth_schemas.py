@@ -3,7 +3,7 @@ from typing import Optional
 from app.enums.roles import RoleEnum
 from fastapi.exceptions import HTTPException
 
-ALLOWED_ROLES = [RoleEnum.AGENT, RoleEnum.CLIENT, RoleEnum.INVESTOR]
+ALLOWED_ROLES = [RoleEnum.AGENT, RoleEnum.CLIENT, RoleEnum.INVESTOR, RoleEnum.OWNER]
 
 class RegisterUserRequest(BaseModel):
 
@@ -11,7 +11,7 @@ class RegisterUserRequest(BaseModel):
     last_name: str
     email: EmailStr 
     password: str
-    role: RoleEnum 
+    role: RoleEnum
 
 
     @field_validator("role")
@@ -19,3 +19,7 @@ class RegisterUserRequest(BaseModel):
         if v not in ALLOWED_ROLES:
             return HTTPException(status_code=422, detail=f"Role {v} is not allowed.")
         return v
+
+class RegisterUserResponse(BaseModel):
+    created: bool
+    message: str

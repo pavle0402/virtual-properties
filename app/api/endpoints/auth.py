@@ -1,1 +1,17 @@
-from fastapi import Request
+from fastapi import Request, APIRouter, Depends
+from app.schemas.auth_schemas import (
+                                    RegisterUserRequest,
+                                    RegisterUserResponse
+                                    )
+from app.controllers.auth import register_controller
+from app.db.db_config import get_db
+
+auth_router = APIRouter()
+
+@auth_router.post("/register", response_model=RegisterUserResponse)
+def register_user(
+    request: RegisterUserRequest,
+    db = Depends(get_db)
+):
+    return register_controller(request, db)
+

@@ -11,4 +11,12 @@ engine = create_engine(
         "options":"-c statement_timeout=15000"
         }
     )
+
 SessionLocal = sessionmaker(autocommit=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
