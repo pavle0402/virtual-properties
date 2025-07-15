@@ -1,4 +1,4 @@
-from pydantic import BaseModel, field_validator, EmailStr
+from pydantic import BaseModel, field_validator, EmailStr, model_validator
 from typing import Optional
 from app.enums.roles import RoleEnum
 from fastapi.exceptions import HTTPException
@@ -23,3 +23,16 @@ class RegisterUserRequest(BaseModel):
 class RegisterUserResponse(BaseModel):
     created: bool
     message: str
+
+class LoginUserRequest(BaseModel):
+    username: Optional[str] = None
+    email: Optional[EmailStr] = None 
+    password: str
+
+    @model_validator
+    def validate_username_email(values):
+        email = values.get("email")
+        username = values.get("username")
+        
+        if not username and not email:
+            raise HTTPException(status_code=422, detail=f"Role {v} is not allowed.")
