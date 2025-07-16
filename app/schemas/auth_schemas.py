@@ -25,14 +25,5 @@ class RegisterUserResponse(BaseModel):
     message: str
 
 class LoginUserRequest(BaseModel):
-    username: Optional[str] = None
-    email: Optional[EmailStr] = None 
+    email: EmailStr 
     password: str
-
-    @model_validator
-    def validate_username_email(values):
-        email = values.get("email")
-        username = values.get("username")
-        
-        if not username and not email:
-            raise HTTPException(status_code=422, detail=f"Role {v} is not allowed.")

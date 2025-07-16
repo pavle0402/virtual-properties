@@ -12,6 +12,6 @@ def register_new_user_dao(user_data: dict, db):
         db.refresh(user)
     return True
 
-def login_dao(email, username, db):
-    user = db.query(User).filter(username=username).first() if username else db.query(User).filter(email=email).first()
+def login_dao(email, db):
+    user = db.query(User).filter(email==email).first()
     return user 

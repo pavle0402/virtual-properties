@@ -1,9 +1,8 @@
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends
 from app.schemas.auth_schemas import (
                                     RegisterUserRequest,
                                     RegisterUserResponse,
-                                    LoginUserRequest,
-                                    LoginResponse
+                                    LoginUserRequest
                                     )
 from app.controllers.auth import register_controller, login_controller
 from app.db.db_config import get_db

@@ -27,10 +27,10 @@ def register_controller(request, db) -> bool:
     return RegisterUserResponse(created=True, message=message)
     
 def login_controller(request, db):
-    email = request.get("email")
-    username = request.get("username")
+    data = request.dict()
+    email = data['email']
 
-    user = login_dao(email, username, db)
+    user = login_dao(email, db)
     if not user or not verify_password(request.password, user.password):
         raise HTTPException(status_code=401, detail="Invalid credentials, please check your spelling.")     
     user_data = {
