@@ -18,7 +18,6 @@ class JWTAuthManager:
         to_encode.update({"exp":expire})
         try:
             token = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-            token = token.replace(".", "")
             return token
         except JWTError as e:
             raise Exception("Failed to encode JWT token!") from e
@@ -29,7 +28,6 @@ class JWTAuthManager:
         expire = datetime.now() + (expires_delta or timedelta(days=REFRESH_TOKEN_LIFETIME))
         to_encode.update({"exp": expire})
         refresh_token = jwt.encode(to_encode, REFRESH_SECRET_KEY, algorithm=ALGORITHM)
-        refresh_token = refresh_token.replace(".", "")
         return refresh_token
     
     @staticmethod

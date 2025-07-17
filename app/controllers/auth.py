@@ -13,7 +13,8 @@ def register_controller(request, db) -> bool:
         role_obj = db.query(Role).filter(Role.role_type == request.role).first()
         password = hash_password(request.password)
         first_name = request.first_name
-        message = f"Welcome {first_name}. We are happy to have you onoboard."
+        last_name = request.last_name
+        message = f"Welcome {first_name} {last_name}. We are happy to have you onboard."
         user_data = {
             "first_name":request.first_name,
             "last_name":request.last_name,

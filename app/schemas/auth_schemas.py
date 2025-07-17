@@ -14,6 +14,7 @@ class RegisterUserRequest(BaseModel):
     role: RoleEnum
 
 
+    #created so regular users can't create ADMIN users. -> For that there will be special endpoint accessed only by admins.
     @field_validator("role")
     def validate_role(cls, v):
         if v not in ALLOWED_ROLES:
