@@ -9,7 +9,7 @@ from .permissions import (
     any_authenticated
 )
 
-#this is used to declare what to import when selecting from app.utils import *
+#this is used to declare what to import when selecting from app.utils import * - not needed but cool
 __all__ = [
     "get_current_user",
     "require_roles", 

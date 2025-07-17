@@ -1,10 +1,9 @@
 from fastapi import FastAPI
-from app.api.endpoints import auth
+from app import router
 
-app = FastAPI()
-api_prefix = "/api"
+app = FastAPI(title="Virtual properties API")
 
-app.include_router(auth.auth_router, prefix=api_prefix + "/auth")
+app.include_router(router)
 
 @app.get("/")
 def main():

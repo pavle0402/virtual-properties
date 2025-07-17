@@ -93,3 +93,5 @@ class Apartment(Base):
 
     owner = relationship("User", back_populates="owned_apartments")
     rentals = relationship("RentalInfo", back_populates="apartment")
+
+
