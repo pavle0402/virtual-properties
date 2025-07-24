@@ -6,7 +6,8 @@ from .permissions import (
     agent_required,
     investor_required,
     admin_or_owner,
-    any_authenticated
+    any_authenticated,
+    crud_real_estate
 )
 
 #this is used to declare what to import when selecting from app.utils import * - not needed but cool
@@ -18,5 +19,6 @@ __all__ = [
     "agent_required",
     "investor_required",
     "admin_or_owner",
-    "any_authenticated"
+    "any_authenticated",
+    "crud_real_estate"
 ]

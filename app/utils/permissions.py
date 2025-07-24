@@ -65,3 +65,4 @@ investor_required = require_roles(RoleEnum.INVESTOR)
 # Common combinations
 admin_or_owner = require_roles([RoleEnum.ADMIN, RoleEnum.OWNER])
 any_authenticated = require_roles([RoleEnum.ADMIN, RoleEnum.OWNER, RoleEnum.AGENT, RoleEnum.INVESTOR])
+crud_real_estate = require_roles([RoleEnum.ADMIN, RoleEnum.AGENT, RoleEnum.INVESTOR, RoleEnum.OWNER])
